@@ -18,13 +18,31 @@ class Array:
         self.length += 1
         return value
     
-    def indexOf(self, value):
+    def first_index_of(self, value):
         for i in range(len(self.data)):
             if self.data[i] == value:
                 return i
         return -1
     
-    def removeAt(self, index):
+    def last_index_of(self, value):
+        index = -1
+        for i in range(len(self.data)):
+            if self.data[i] == value:
+                index = i
+        return index
+
+    def nth_index_of(self, value, n):
+        index = -1
+        count = 0
+        for i in range(len(self.data)):
+            if self.data[i] == value:
+                count += 1
+                index = i
+                if count == n:
+                    return index
+        return index
+    
+    def remove_at(self, index):
         if index >= self.length or index < 0:
             raise IndexError("Index out of range")
         temp = self.data[index]
@@ -49,9 +67,7 @@ class Array:
             if self.data[i] == None:
                 return
             elif i != self.length - 1:
-                if i != 0:
-                    print(" ", end="")
-                print(self.data[i], end="")
+                print(self.data[i], end=" ")
             else:
                 print(self.data[i])
 
@@ -85,14 +101,19 @@ a.insert(1)
 a.insert(2)
 a.print()
 a.insert(3)
+a.insert(8)
 a.insert(4)
 a.insert(5)
+a.insert(8)
 a.insert(6)
+a.insert(8)
 a.insert(7)
 a.insert(8)
 a.print()
 print(a[1])
-print(a.removeAt(1))
+print(a.remove_at(1))
 a.print()
 print(len(a))
-print(a.indexOf(5))
+print("first index of 8", a.first_index_of(8))
+print("last index of 8", a.last_index_of(8))
+print("second index of 8", a.nth_index_of(8, 2))
