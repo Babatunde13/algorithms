@@ -63,6 +63,14 @@ class LinkedList:
     def last_index_of(self, value):
         return self.__nth_index_of(value, self.length - 1)
     
+    def contains(self, value):
+        node = Node(value)
+        while self.head != None:
+            if self.head == node:
+                return True
+            self.head = self.head.next
+        return False
+    
     def __remove_at(self, index):
         if index >= self.length or index < 0:
             raise IndexError("Index out of range")

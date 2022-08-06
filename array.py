@@ -50,7 +50,22 @@ class Array:
         if self.length == 0:
             raise IndexError("Index out of range")
         return self.remove_at(self.length - 1)
+
+    def shift(self):
+        if self.length == 0:
+            raise IndexError("Index out of range")
+        return self.remove_at(0)
     
+    def push(self, value):
+        self.insert(value)
+        return self
+    
+    def contains(self, value):
+        for i in range(len(self.data)):
+            if self.data[i] == value:
+                return True
+        return False
+
     def clear(self):
         self.data = [None] * self.length
         self.length = 0
