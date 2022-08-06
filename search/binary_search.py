@@ -23,25 +23,24 @@ class RecursiveBinarySearch:
         self.data_copy = data
         self.index = 0
     
-    def find(self, target):
+    def contains(self, target):
         if len(self.data_copy) == 0:
-            return -1
+            return False
         
         mid_idx = len(self.data_copy) // 2
-        self.index += mid_idx
         mid_value = self.data_copy[mid_idx]
         if target == mid_value:
-            return self.index
+            return True
         else:
             if target > mid_value:
-                self.data_copy = self.data_copy[mid_idx:]
-                return self.find(target)
+                self.data_copy = self.data_copy[mid_idx+1:]
+                return self.contains(target)
             else:
                 self.data_copy = self.data_copy[:mid_idx]
-                return self.find(target)
+                return self.contains(target)
 
 a = BinarySearch([1, 2, 4, 5, 6, 7, 8, 8, 9, 10])
-print(a.find(10))
+print(a.find(2))
 
 b = RecursiveBinarySearch([1, 2, 4, 5, 6, 7, 8, 8, 9, 10])
-print(b.find(10))
+print(b.contains(12))
