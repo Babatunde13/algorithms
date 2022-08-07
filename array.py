@@ -1,4 +1,4 @@
-class Array:
+class MyArray:
     def __init__(self, length=0):
         self.length = length
         self.data = [None] * length
@@ -119,9 +119,12 @@ class Array:
     def __iadd__(self, other):
         self.data += other.data
         return self
+    
+    # def __contains__(self, value):
+    #     return self.contains(value)                                                                          
 
 if __name__ == '__main__':
-    a = Array()
+    a = MyArray()
     a.insert(1)
     a.insert(2)
     a.print()
@@ -142,3 +145,8 @@ if __name__ == '__main__':
     print("first index of 8", a.first_index_of(8))
     print("last index of 8", a.last_index_of(8))
     print("second index of 8", a.nth_index_of(8, 2))
+    print(551 in a)
+    for i in a:
+        print(i)
+    print(a)
+    print('length: ', len(a))
